@@ -9,29 +9,25 @@ using Mediachase.Commerce.Orders.Dto;
 using Mediachase.Commerce.Orders.Managers;
 using Geta.Bring.Shipping;
 using EPiServer.Commerce.Order;
+using EPiServer.ServiceLocation;
 using Geta.Bring.EPi.Commerce.Factories;
 
 namespace Geta.Bring.EPi.Commerce
 {
-    public class BringShippingGateway : IShippingPlugin
+    public class BringShippingGateway : IShippingGateway
     {
         private readonly IShippingClient _shippingClient;
         private readonly IEstimateQueryFactory _estimateQueryFactory;
         private readonly IEstimateSettingsFactory _estimateSettingsFactory;
 
-        public BringShippingGateway(IShippingClient shippingClient, IEstimateQueryFactory estimateQueryFactory, IEstimateSettingsFactory estimateSettingsFactory)
+        public BringShippingGateway()
         {
-            _shippingClient = shippingClient;
-            _estimateQueryFactory = estimateQueryFactory;
-            _estimateSettingsFactory = estimateSettingsFactory;
+            _shippingClient = ServiceLocator.Current.GetInstance<IShippingClient>();
+            _estimateQueryFactory = ServiceLocator.Current.GetInstance<IEstimateQueryFactory>();
+            _estimateSettingsFactory = ServiceLocator.Current.GetInstance<IEstimateSettingsFactory>();
         }
 
-        public ShippingRate GetRate(IMarket market, Guid methodId, IShipment shipment, ref string message)
-        {
-            return GetRate(methodId, shipment, ref message);
-        }
-
-        public ShippingRate GetRate(Guid methodId, IShipment shipment, ref string message)
+        public ShippingRate GetRate(Guid methodId, Shipment shipment, ref string message)
         {
             if (shipment == null)
             {
@@ -52,7 +48,7 @@ namespace Geta.Bring.EPi.Commerce
                 return CreateBaseShippingRate(methodId, shippingMethodRow);
             }
 
-            if (shipment.ShippingAddress == null)
+            if (shipment.ShippingAddressId == null)
             {
                 message = ErrorMessages.ShipmentAddressNotFound;
                 return CreateBaseShippingRate(methodId, shippingMethodRow);

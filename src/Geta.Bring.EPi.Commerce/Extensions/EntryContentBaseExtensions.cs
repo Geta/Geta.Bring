@@ -17,14 +17,14 @@ namespace Geta.Bring.EPi.Commerce.Extensions
                 return 0;
             }
 
-            var relations = _injectedRelationRepository.Service.GetChildren<T>(entry.ContentLink);
+            var relations = _injectedRelationRepository.Service.GetRelationsByTarget<T>(entry.ContentLink);
             var contentLoader = _injectedContentLoader.Service;
 
             decimal weight = 0;
 
             foreach (var entryRelation in relations)
             {
-                if (contentLoader.TryGet(entryRelation.Child, out EntryContentBase relationEntry))
+                if (contentLoader.TryGet(entryRelation.Target, out EntryContentBase relationEntry))
                 {
                     var stockPlacementEntry = relationEntry as IStockPlacement;
 
