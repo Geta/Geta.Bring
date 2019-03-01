@@ -48,7 +48,18 @@ namespace Geta.Bring.EPi.Commerce
                 return CreateBaseShippingRate(methodId, shippingMethodRow);
             }
 
-            if (shipment.ShippingAddressId == null)
+            if (shipment.Parent == null || shipment.Parent.Parent == null)
+            {
+                message = ErrorMessages.OrderFormOrOrderGroupNotFound;
+                return null;
+            }
+
+            var orderAddress =
+                shipment.Parent
+                    .Parent
+                    .OrderAddresses
+                    .FirstOrDefault(address => address.Name == shipment.ShippingAddressId);
+            if (orderAddress == null)
             {
                 message = ErrorMessages.ShipmentAddressNotFound;
                 return CreateBaseShippingRate(methodId, shippingMethodRow);
