@@ -71,6 +71,10 @@
     <Compile Include="Booking\Model\Parties.cs" />
     <Compile Include="Booking\Model\Party.cs" />
     <Compile Include="Booking\Model\Product.cs" />
+    <Compile Include="Common\AuthenticationSettingsComparer.cs" />
+    <Compile Include="Common\HttpClientFactory.cs" />
+    <Compile Include="Common\Model\AuthenticationSettings.cs" />
+    <Compile Include="Common\Model\IAuthenticationSettings.cs" />
     <Compile Include="Pickup\IPickupClient.cs" />
     <Compile Include="Pickup\Model\IPickupQueryParameter.cs" />
     <Compile Include="Pickup\Model\OpenDaysFilter.cs" />
