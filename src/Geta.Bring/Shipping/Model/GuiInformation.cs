@@ -17,9 +17,11 @@ namespace Geta.Bring.Shipping.Model
             string descriptionText, 
             string helpText, 
             string tip, 
+            string deliveryType,
             int maxWeightInKgs)
         {
             MaxWeightInKgs = maxWeightInKgs;
+            DeliveryType = deliveryType;
             Tip = tip;
             HelpText = helpText;
             DescriptionText = descriptionText;
@@ -69,6 +71,11 @@ namespace Geta.Bring.Shipping.Model
         /// Tip.
         /// </summary>
         public string Tip { get; }
+
+        /// <summary>
+        /// Type of delivery.
+        /// </summary>
+        public string DeliveryType { get; }
 
         /// <summary>
         /// Max weight in kilograms.

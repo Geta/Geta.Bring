@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Geta.Bring.Common.Model;
 using Geta.Bring.Shipping.Model;
 
 namespace Geta.Bring.Shipping
@@ -8,7 +9,7 @@ namespace Geta.Bring.Shipping
     /// <summary>
     /// Settings for <see cref="ShippingClient" />
     /// </summary>
-    public class ShippingSettings
+    public class ShippingSettings : IAuthenticationSettings
     {
         /// <summary>
         /// Initializes new instance of <see cref="ShippingSettings"/> with default Bring Shipping Guide API endpoint: https://developer.bring.com/api/products/

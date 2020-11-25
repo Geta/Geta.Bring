@@ -29,6 +29,7 @@ namespace Tests.Integration.Shipping
                             "Pakken kan spores og utleveres på ditt lokale hentested.",
                             "Klimanøytral Servicepakke leveres til mottakers lokale hentested (postkontor eller Post i Butikk). Mottaker kan velge å hente sendingen på et annet hentested enn sitt lokale. Mottaker varsles om at sendingen er ankommet via SMS, e-post eller hentemelding i postkassen. Sendingen kan spores ved hjelp av sporingsnummeret.",
                             null,
+                            "Hentested",
                             35
                         ),
                         new PackagePrices(new PackagePrice(
@@ -59,6 +60,7 @@ namespace Tests.Integration.Shipping
                             "Pakken kan spores og leveres hjem til deg mellom kl. 08-17 eller 17-21 avhengig av ditt postnummer. Sjåføren ringer 30-60 min. før ankomst ved levering på kveldstid.",
                             "På Døren leveres hjem til mottaker mellom kl. 08-17 eller 17-21 avhengig av mottakers postnummer. Mottaker varsles i god tid om forventet utleveringsdag via SMS eller e-post, i tillegg til nytt varsel når sendingen er lastet på bil for utkjøring samme dag. Mottaker kan gi Posten fullmakt til at pakken settes igjen ved døren eller et angitt sted hvis mottaker ikke er hjemme. Sjåføren ringer mottaker 30-60 minutter før ankomst ved levering på kveldstid. Mottaker kan endre leveringsdag når pakken spores (gjelder ikke lokalpakker). Dersom sendingen ikke kan leveres, blir den sendt til mottakers lokale hentested (postkontor eller Post i Butikk). Sendingen kan spores ved hjelp av sporingsnummeret.",
                             null,
+                            "Dør",
                             35
                         ),
                         new PackagePrices(new PackagePrice(
