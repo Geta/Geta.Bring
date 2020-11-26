@@ -25,7 +25,8 @@ https://github.com/svenrog
 
 ### Upgrading from previous versions (in EPiServer)
 
-Previous versions of this package used the unathenticated Pickup Api, Bring now requires authentication.
+Previous versions of this package used the unathenticated Pickup Api, Bring now rate limits unauthenticated calls.
+
 Previous versions of this package used Bring Shipping API 1.0. This package is now upgraded to use version 2.0.
 
 Make sure to note that dependency injection now requires that a MyBring user and API key is stated when configuring _IShippingClient_.
