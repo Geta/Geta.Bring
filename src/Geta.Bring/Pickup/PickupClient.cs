@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Caching;
+using Geta.Bring.Common;
 using Geta.Bring.Pickup.Model;
 using Newtonsoft.Json;
 
@@ -74,12 +75,6 @@ namespace Geta.Bring.Pickup
             return await GetResponseAsync("all.json", query);
         }
 
-        private HttpClient CreateClient()
-        {
-            var client = new HttpClient();
-            return client;
-        }
-
         private async Task<PickupResult> GetResponseAsync(string relativePath, PickupQuery query)
         {
             string jsonResponse;
@@ -91,21 +86,20 @@ namespace Geta.Bring.Pickup
             if (cached != null)
                 return await Task.FromResult(cached);
 
-            using (var client = CreateClient())
+            var client = HttpClientFactory.CreateClient(Settings);
+
+            try
             {
-                try
-                {
-                    jsonResponse = await client.GetStringAsync(requestUri).ConfigureAwait(false);
-                }
-                catch (HttpRequestException rEx)
-                {
-                    // TODO: parse errors from here and create strongly typed error messages
-                    // Could be object with Code, Description and HTML (full message received from Bring)
-                    // Some errors are validation errors like - invalid postal code, invalid city etc., but some are exceptions.
-                    // Wrap and return only validation errors, others throw further.
-                    // Wrap configuration errors and throw them with details, but other errors throw as is.
-                    return PickupResult.CreateFailure(rEx.Message);
-                }
+                jsonResponse = await client.GetStringAsync(requestUri).ConfigureAwait(false);
+            }
+            catch (HttpRequestException rEx)
+            {
+                // TODO: parse errors from here and create strongly typed error messages
+                // Could be object with Code, Description and HTML (full message received from Bring)
+                // Some errors are validation errors like - invalid postal code, invalid city etc., but some are exceptions.
+                // Wrap and return only validation errors, others throw further.
+                // Wrap configuration errors and throw them with details, but other errors throw as is.
+                return PickupResult.CreateFailure(rEx.Message);
             }
 
             try

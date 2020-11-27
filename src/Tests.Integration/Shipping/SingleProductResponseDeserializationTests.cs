@@ -29,6 +29,7 @@ namespace Tests.Integration.Shipping
                                 "Pakken kan spores og utleveres på ditt lokale hentested.",
                                 "Klimanøytral Servicepakke leveres til mottakers lokale hentested (postkontor eller Post i Butikk). Mottaker kan velge å hente sendingen på et annet hentested enn sitt lokale. Mottaker varsles om at sendingen er ankommet via SMS, e-post eller hentemelding i postkassen. Sendingen kan spores ved hjelp av sporingsnummeret.",
                                 null,
+                                "Hentested",
                                 35
                             ),
                             new PackagePrices(new PackagePrice(
