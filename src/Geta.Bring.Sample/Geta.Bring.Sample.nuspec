@@ -11,5 +11,6 @@
     <description>$description$</description>
     <copyright>Copyright 2015</copyright>
     <tags>Shipping Bring</tags>
+    <repository type="git" url="URL" branch="BRANCH_NAME" commit="COMMIT" />
   </metadata>
 </package>
