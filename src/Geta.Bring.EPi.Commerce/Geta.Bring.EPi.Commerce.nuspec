@@ -11,6 +11,7 @@
     <description>$description$</description>
     <copyright>Copyright 2018</copyright>
     <tags>Bring EPiServer Commerce</tags>
+    <repository type="git" url="URL" branch="BRANCH_NAME" commit="COMMIT" />
     <dependencies>
       <dependency id="EPiServer.CMS.Core" version="[11.4.0,12)" />
       <dependency id="EPiServer.Commerce.Core" version="[13,14)" />
